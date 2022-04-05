@@ -35,6 +35,51 @@ namespace RestwithASPNET.Controllers
             }
             return BadRequest("Invalid Input");
         }
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+        public IActionResult Multiplication(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var subtraction = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("division/{firstNumber}/{secondNumber}")]
+        public IActionResult Division(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var subtraction = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("mean/{firstNumber}/{secondNumber}")]
+        public IActionResult Mean(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var subtraction = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber))/2;
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("square-root/{firstNumber}")]
+        public IActionResult SquareRoot(string firstNumber)
+        {
+            if (IsNumeric(firstNumber) )
+            {
+                var subtraction = Math.Sqrt((double)ConvertToDecimal(firstNumber));
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
         private decimal ConvertToDecimal(string strNumber)
         {
             decimal decimalValue;
